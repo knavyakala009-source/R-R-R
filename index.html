@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RRR - Rent Reuse Return</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">♻️ RRR</div>
+  <div class="tagline">Don't Buy. Rent. Borrow. Reuse.</div>
+
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('categories')">Categories</button>
+    <button onclick="showPage('items')">My Items</button>
+    <button onclick="showPage('requests')">Requests</button>
+    <button onclick="showPage('wishlist')">♡ Wishlist</button>
+    <button onclick="showPage('profile')">Profile</button>
+  </nav>
+</header>
+
+<main>
+
+<section id="home" class="page active">
+  <div class="hero">
+    <h1>Welcome to RRR 👋</h1>
+    <p>Rent, borrow and reuse useful items from your college community.</p>
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="🔍 Search items..."
+      oninput="searchItems()"
+    >
+  </div>
+
+  <h2>Categories</h2>
+
+  <div class="categories">
+    <button onclick="filterCategory('Electronics')">💻 Electronics</button>
+    <button onclick="filterCategory('Books')">📚 Books</button>
+    <button onclick="filterCategory('Study Materials')">✏️ Study Materials</button>
+    <button onclick="filterCategory('Hostel Items')">🏠 Hostel Items</button>
+    <button onclick="filterCategory('Sports')">⚽ Sports</button>
+    <button onclick="filterCategory('Other')">📦 Other</button>
+  </div>
+
+  <h2>Available Items</h2>
+  <div id="itemsContainer" class="items-grid"></div>
+</section>
+
+
+<section id="categories" class="page">
+  <h1>Categories</h1>
+
+  <div class="categories">
+    <button>💻 Electronics</button>
+    <button>📚 Books</button>
+    <button>🧪 Laboratory</button>
+    <button>🎒 Travel</button>
+    <button>🏠 Hostel Items</button>
+    <button>⚽ Sports</button>
+    <button>🛠 Project Components</button>
+    <button>✏️ Engineering Drawing</button>
+  </div>
+</section>
+
+
+<section id="items" class="page">
+  <h1>My Items</h1>
+
+  <button class="primary" onclick="openPostItem()">
+    + Post New Item
+  </button>
+
+  <div id="myItems" class="items-grid"></div>
+</section>
+
+
+<section id="requests" class="page">
+  <h1>My Requests</h1>
+  <div id="requestsContainer"></div>
+</section>
+
+
+<section id="wishlist" class="page">
+  <h1>♡ My Wishlist</h1>
+  <div id="wishlistContainer" class="items-grid"></div>
+</section>
+
+
+<section id="profile" class="page">
+  <h1>My Profile</h1>
+
+  <div class="card profile-card">
+    <h2>Student Profile</h2>
+    <p><b>Name:</b> Student</p>
+    <p><b>College:</b> RGUKT</p>
+    <p><b>Status:</b> <span class="verified">✓ Verified Student</span></p>
+
+    <button class="primary" onclick="verifyStudent()">
+      Verify College ID
+    </button>
+  </div>
+</section>
+
+</main>
+
+
+<div id="itemModal" class="modal">
+  <div class="modal-box">
+
+    <button class="close" onclick="closeModal()">×</button>
+
+    <h2 id="modalTitle"></h2>
+
+    <p id="modalDescription"></p>
+
+    <p>
+      <b>Category:</b>
+      <span id="modalCategory"></span>
+    </p>
+
+    <p>
+      <b>Condition:</b>
+      <span id="modalCondition"></span>
+    </p>
+
+    <p>
+      <b>Rent:</b>
+      ₹<span id="modalPrice"></span>/day
+    </p>
+
+    <button class="primary" onclick="requestItem('Rent')">
+      Rent
+    </button>
+
+    <button class="secondary" onclick="requestItem('Borrow')">
+      Borrow
+    </button>
+
+  </div>
+</div>
+
+
+<div id="postModal" class="modal">
+  <div class="modal-box">
+
+    <button class="close" onclick="closePostItem()">×</button>
+
+    <h2>Post an Item</h2>
+
+    <input id="itemName" placeholder="Item Name">
+
+    <select id="itemCategory">
+      <option>Electronics</option>
+      <option>Books</option>
+      <option>Study Materials</option>
+      <option>Hostel Items</option>
+      <option>Laboratory</option>
+      <option>Sports</option>
+      <option>Other</option>
+    </select>
+
+    <textarea
+      id="itemDescription"
+      placeholder="Description"
+    ></textarea>
+
+    <select id="itemCondition">
+      <option>New</option>
+      <option>Like New</option>
+      <option>Good</option>
+      <option>Used</option>
+    </select>
+
+    <input
+      id="itemPrice"
+      type="number"
+      placeholder="Rent price per day"
+    >
+
+    <input
+      id="itemImage"
+      type="url"
+      placeholder="Image URL"
+    >
+
+    <button class="primary" onclick="postItem()">
+      Post Item
+    </button>
+
+  </div>
+</div>
+
+
+<footer>
+  <p>♻️ RRR — Rent • Reuse • Return</p>
+  <p>Made for RGUKT Students</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
